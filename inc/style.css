@@ -1,0 +1,146 @@
+body,p{
+    margin: 0;
+    padding:0;
+ }
+
+ fieldset{
+     background:lightgrey;
+ }
+
+.main{
+    height:70vh;;
+}
+
+#message_tchat{
+    overflow:scroll;
+    overflow-x:hidden;
+    height:70vh;
+}
+
+.bleu{
+    color:blue;
+}
+.rose{
+    color:rosybrown;
+}
+
+.bleu,.rose{
+    cursor:pointer;
+}
+.bleu:hover{
+    background-color:lightblue;
+    color:white;
+}
+.rose:hover{
+    background-color:lightpink;
+    color:white;
+}
+
+.smiley{ 
+    margin: 2px;
+    width:22px;
+ }
+
+.loader{
+background: url(ajax-loader.gif) no-repeat;
+width: 22px;
+height: 22px;
+}
+
+.container{
+    box-shadow: 0 0 10px 10px rgba(0,0,0,0.3);
+    border-radius:20px;
+    height:86vh;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: royalblue;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: darkblue; 
+    border-radius: 10px;
+}
+
+/*
+#conteneur{
+width: 1000px;
+margin: 20px auto 200px auto;
+padding: 10px;
+background: #dbdbdb;
+box-shadow: 1px 1px 6px;
+border-radius: 5px;
+}
+#message_tchat{
+float: left;
+width: 800px;
+height: 500px;
+margin: 0 20px 0 0;
+border: 1px solid #c0c0c0;
+padding: 5px;
+overflow: auto;
+background: #fff;
+overflow:scroll;
+overflow-x:hidden;
+max-height:500px;
+}
+#message_tchat  p.bleu:hover, #liste_membre_connecte  p.bleu:hover{
+
+background: #e3eefe;
+}
+#message_tchat  p.rose:hover, #liste_membre_connecte  p.rose:hover {
+
+background: #fde3fe;
+}
+#liste_membre_connecte{
+float: left;
+width:145px;
+height: 500px;
+border: 1px solid #c0c0c0;
+padding: 5px 10px;
+background: #fff;
+overflow: auto;
+}
+#smiley{
+float: left;
+width:	798px;
+height: 50px;
+margin: 20px 0 20px 0;
+border: 1px solid #c0c0c0;
+}
+#smiley img{ margin: 2px; }
+#formulaire_tchat{
+height: 130px;
+}
+#message{
+float: left;
+width: 800px;
+height: 21px;
+resize: none;
+margin: 0 10px 0 0;
+padding: 2px;
+border: 1px solid #c0c0c0;
+}
+.submit{ float: left; background: #dbdbdb;  }
+.clear{ clear: both; }
+.bleu { color: #4e99e6; }
+.rose { color: #e86dbe; }
+.erreur{ background: red; padding: 5px; }
+h2{ margin: 0; font-size: 13px; }
+p{ margin: 0; }
+#message_tchat:hover{ cursor: default; }
+#liste_membre_connecte:hover{ cursor: default; }
+*/
