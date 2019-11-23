@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 13 Novembre 2018 à 20:19
+-- Généré le :  Ven 22 Novembre 2019 à 18:13
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `tchat`
+-- Base de données :  `chat`
 --
 
 -- --------------------------------------------------------
@@ -46,7 +46,8 @@ CREATE TABLE `membre` (
   `civilite` enum('m','f') NOT NULL,
   `ville` varchar(50) NOT NULL,
   `date_de_naissance` date NOT NULL,
-  `date_connexion` varchar(11) NOT NULL
+  `date_active` varchar(11) NOT NULL,
+  `avatar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

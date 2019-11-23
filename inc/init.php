@@ -4,7 +4,7 @@
 session_start();
 
 // ouverture de la connexion BDD
-$pdo = new PDO('mysql:host=localhost;dbname=tchat',
+$pdo = new PDO('mysql:host=localhost;dbname=chat',
 'root',
 'root',
 array(
@@ -13,7 +13,8 @@ array(
 ));
 
 // Initialisation variable
-$msg = '';
+$msg = array();
+
 
 // Fonction de calcul d'age à partir d'une date de naissance sous la forme AAAA-MM-JJ
 function age($naiss)
@@ -23,3 +24,5 @@ function age($naiss)
     $interval = $today->diff($date_naiss);
     return $interval->format('%y');
 }
+
+define('URL','/chat/');

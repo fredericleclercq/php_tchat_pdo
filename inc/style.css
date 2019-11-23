@@ -3,22 +3,19 @@ body,p{
     padding:0;
  }
 
- fieldset{
-     background:lightgrey;
- }
 
 .main{
-    height:70vh;;
+    min-height:60vh;
+    max-height:60vh;
 }
 
-#message_tchat{
-    overflow:scroll;
+#message_tchat,#liste_membre_connecte{
+    overflow-y:auto;
     overflow-x:hidden;
-    height:70vh;
 }
 
 .bleu{
-    color:blue;
+    color:cyan;
 }
 .rose{
     color:rosybrown;
@@ -28,12 +25,12 @@ body,p{
     cursor:pointer;
 }
 .bleu:hover{
-    background-color:lightblue;
-    color:white;
+    background-color:cyan;
+    color:black;
 }
 .rose:hover{
-    background-color:lightpink;
-    color:white;
+    background-color:rosybrown;
+    color:black;
 }
 
 .smiley{ 
@@ -47,30 +44,43 @@ width: 22px;
 height: 22px;
 }
 
-.container{
+.splash{
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.3);
-    border-radius:20px;
-    height:86vh;
+    border-radius:10px;
+    min-height:50vh;
+}
+
+#formulaire_tchat .btn{
+    min-width:40%;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 15px;    
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background:#343a40;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: royalblue;
-    border-radius: 10px;
+    background: #6c757d;
+    border-radius: 15px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: darkblue; 
-    border-radius: 10px;
+    background:  #6c757d;
+    border-radius: 15px;
+}
+
+
+/* media queries */
+@media screen and (max-width:768px){
+    .main{
+        max-height:30vh;
+        min-height:20vh;
+    }
 }

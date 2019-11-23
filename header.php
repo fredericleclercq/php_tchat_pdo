@@ -14,10 +14,10 @@
         ?>
         var lastid = <?= $donnees['id_dialogue'] ?? 0 ?>;
     </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="inc/ajax.js"></script>
 </head>
-<body>
-<h1 class="text-center pt-3">Bienvenue dans mon T'chat</h1>
-<div class="container pt-3">
+<body class="bg-dark text-light">
+<h1 class="text-center mt-3 pt-3 px-3"><img src="<?= URL . 'logo.png' ?>" alt="logo" class="img-fluid"></h1>
+<div class="container mt-3 pt-3">

@@ -13,10 +13,10 @@ require_once('header.php');
 ?>
 
 
-    <div class="row">
-        <div id="message_tchat" class="col-md-8 border main bg-light px-4 py-2 scrollbar scrollbar-primary">
+    <div class="row d-flex">
+        <div id="message_tchat" class="col-md-8 main bg-dark text-light px-4 py-2 order-1 order-md-0">
             
-            <h4>Connecté en tant que <?= ucfirst($_SESSION['pseudo']) ?></h4>
+            <h5>Connecté en tant que <?= ucfirst($_SESSION['pseudo']) ?></h5>
             <?php
             $result = $pdo->query("SELECT 
             d.id_dialogue,m.pseudo,m.civilite,d.message,
@@ -35,10 +35,10 @@ require_once('header.php');
             }
             ?>
         </div>
-        <div id="liste_membre_connecte" class="col-md-4 border main bg-light px-4 py-2">
-                <h4>Membres connectés:</h4>
+        <div id="liste_membre_connecte" class="col-md-4 main bg-dark text-light px-4 py-2 order-0 order-md-1">
+                <h5>Membres connectés:</h5>
                 <?php
-                $resultat=$pdo->query("SELECT * FROM membre WHERE date_connexion >".(time()-1800)." ORDER BY pseudo ASC");
+                $resultat=$pdo->query("SELECT * FROM membre WHERE date_active >".(time()-1800)." ORDER BY pseudo ASC");
                 while ( $membre = $resultat->fetch(PDO::FETCH_ASSOC))
                 {
                     if ( $membre['civilite'] == 'm' )
@@ -58,7 +58,7 @@ require_once('header.php');
     </div>
 
     <div class="row">
-            <div class="col-12 border px-3 py-3">        
+            <div class="col-12  px-3 py-3">        
                     <img class="smiley" src="smil/smiley1.png" alt=":)">
                     <img class="smiley" src="smil/smiley2.png" alt=":(">
                     <img class="smiley" src="smil/smiley3.png" alt=";)">
@@ -70,15 +70,13 @@ require_once('header.php');
 
 
     <div id="formulaire_tchat">
-        <form method="post" action="#" class="row border px-2 py-2 bg-light">
-            <div class="col-9">
+        <form method="post" action="#" class="row  bg-dark text-light px-2 py-2 bg-light">
+            <div class="col-md-8">
                 <input type="text" id="message" name="message" class="form-control">
             </div>
-            <div class="col-1 text-center">
-                <input type="submit" name="envoi" value="Envoi" class="btn btn-primary" id="submit">
-            </div>
-            <div class="col-2 text-center">                        
-            <button class="btn btn-warning" id="deco_button">Déconnecter</button>
+            <div class="col-md-4 mt-3 mt-md-0 d-flex align-items-center justify-content-center">
+                <input type="submit" name="envoi" value="Envoi" class="btn btn-primary btn-sm d-block mx-auto" id="submit">                            
+                <button type="button" class="btn btn-warning btn-sm d-block mx-auto" id="deco_button">Déconnecter</button>
             </div>
         </form>
         </div>

@@ -19,7 +19,7 @@ if ( $action == 'envoi_message')
             'message' => $message
         ));
         // mise à jour du timestamp de l'activité
-        $result=$pdo->prepare("UPDATE membre SET date_connexion=".time()." WHERE id_membre=:id_membre");
+        $result=$pdo->prepare("UPDATE membre SET date_active=".time()." WHERE id_membre=:id_membre");
         $result->execute(array('id_membre' => $_SESSION['id_membre']));
     }
 
@@ -54,8 +54,8 @@ if ( $action == 'affichage_message')
 
 if ( $action == 'affichage_membre_connecte')
 {
-    $resultat=$pdo->query("SELECT * FROM membre WHERE date_connexion >".(time()-1800)." ORDER BY pseudo");
-    $tab['resultat'] = '<h2>Membres connectés</h2>';
+    $resultat=$pdo->query("SELECT * FROM membre WHERE date_active >".(time()-1800)." ORDER BY pseudo");
+    $tab['resultat'] = '<h5>Membres connectés</h5>';
     while ( $membre = $resultat->fetch(PDO::FETCH_ASSOC))
     {
         if ( $membre['civilite'] == 'm' )
@@ -68,12 +68,14 @@ if ( $action == 'affichage_membre_connecte')
             $titre="Femme";
         }
         $tab['resultat'] .= '<p class="'.$couleur.'" 
-        title="'.$titre.', '.$membre['ville'].', '.age($membre['date_de_naissance']).' ans">'.$membre['pseudo'].'</p>';
+        title="'.$titre.', '.$membre['ville'].', '.age($membre['date_de_naissance']).' ans">'.ucfirst($membre['pseudo']).'</p>';
     }
     $tab['validation']= 'ok';
 }
 
 if ( $action == 'deco'){
+    $result=$pdo->prepare("UPDATE membre SET date_active=0 WHERE id_membre=:id_membre");
+    $result->execute(array('id_membre' => $_SESSION['id_membre']));
     session_destroy();
     $tab['validation']= 'ok';
 }
