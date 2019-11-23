@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     //initialisations diverses
     //var lastid = 0;
+    "use strict";
 
     if ($('#message_tchat').length > 0) {
 
@@ -76,7 +77,7 @@ $(document).ready(function () {
 
     })
 
-    $('#deco_button').on('click', function(event) {
+    $('#deco_button').on('click', function (event) {
 
         event.preventDefault();
         var parameters = 'action=deco';
@@ -108,6 +109,7 @@ $(document).ready(function () {
     }
 
     // --------------------------------------- DROP DE FICHIER AVATAR INSCRIPTION --------------------------------------------
+
     $('html')
         .on('dragover', function (e) {
             e.stopPropagation();
@@ -131,10 +133,10 @@ $(document).ready(function () {
             e.preventDefault();
         })
         .on('drop', function (e) {
-             e.stopPropagation();
+            e.stopPropagation();
             e.preventDefault();
             $("#depotavatar").css('border', '');
-            fichiers = e.originalEvent.dataTransfer.files;
+            let fichiers = e.originalEvent.dataTransfer.files;
             checkFile(fichiers);
         });
 
@@ -146,26 +148,28 @@ $(document).ready(function () {
     let liste = ['image/jpeg', 'image/png', 'image/gif'];
     function checkFile(fic) {
 
+
+
         if (fic.length > 0) {
 
             if (fic[0].size > 0 && fic[0].size < 2000000) {
                 // controle format
                 if ($.inArray(fic[0].type, liste) != -1) {
 
-                    $('#avatar').prop('files', fic);                  
+                    $('#avatar')[0].files = fic;   // ! Edge ! pb with strict mode
 
                     let reader = new FileReader();
                     reader.onload = function (e) {
                         let image = new Image();
-                        image.src = e.target.result     
+                        image.src = e.target.result
                         $("#depotavatar").html('<img src="' + e.target.result + '" class="w-25 img-fluid">');
-                        $(image).on('load',function(){
+                        $(image).on('load', function () {
 
-                            if(image.width >1200 || image.height > 1200){
+                            if (image.width > 1200 || image.height > 1200) {
                                 $("#depotavatar").html('Format max non respecté 1200x1200 ');
                                 $('#avatar').removeProp('files');
-                            }else{
-                                $("#depotavatar").append('<br>'+fic[0].type+' '+image.width+'x'+ image.height);
+                            } else {
+                                $("#depotavatar").append('<br>' + fic[0].type + ' ' + image.width + 'x' + image.height);
                             }
                         });
                     }
@@ -183,7 +187,7 @@ $(document).ready(function () {
         }
     }
 
-    if ( $('#memoavatar').val() != '' ){
+    if ($('#memoavatar').val() != '') {
         $("#depotavatar").html('<img src="avatars/' + $('#memoavatar').val() + '" class="w-25 img-fluid">');
     }
 

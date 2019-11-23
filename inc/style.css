@@ -1,86 +1,97 @@
-body,p{
+body, p {
     margin: 0;
-    padding:0;
- }
-
-
-.main{
-    min-height:60vh;
-    max-height:60vh;
+    padding: 0;
 }
 
-#message_tchat,#liste_membre_connecte{
-    overflow-y:auto;
-    overflow-x:hidden;
+.main {
+    min-height: 55vh;
+    max-height: 55vh;
 }
 
-.bleu{
-    color:cyan;
-}
-.rose{
-    color:rosybrown;
+#message_tchat, #liste_membre_connecte {
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.bleu,.rose{
-    cursor:pointer;
-}
-.bleu:hover{
-    background-color:cyan;
-    color:black;
-}
-.rose:hover{
-    background-color:rosybrown;
-    color:black;
+.bleu {
+    color: cyan;
 }
 
-.smiley{ 
+.rose {
+    color: rosybrown;
+}
+
+.bleu, .rose {
+    cursor: pointer;
+}
+
+.bleu:hover {
+    background-color: cyan;
+    color: black;
+}
+
+.rose:hover {
+    background-color: rosybrown;
+    color: black;
+}
+
+.smiley {
     margin: 2px;
-    width:22px;
- }
-
-.loader{
-background: url(ajax-loader.gif) no-repeat;
-width: 22px;
-height: 22px;
+    width: 22px;
 }
 
-.splash{
-    box-shadow: 0 0 10px 10px rgba(0,0,0,0.3);
-    border-radius:10px;
-    min-height:50vh;
+.loader {
+    background: url(ajax-loader.gif) no-repeat;
+    width: 22px;
+    height: 22px;
 }
 
-#formulaire_tchat .btn{
-    min-width:40%;
+.splash {
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    min-height: 50vh;
+}
+
+#formulaire_tchat .btn {
+    min-width: 40%;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
 }
 
 /* width */
+
 ::-webkit-scrollbar {
-    width: 15px;    
+    width: 15px;
 }
 
 /* Track */
+
 ::-webkit-scrollbar-track {
-    background:#343a40;
+    background: #343a40;
 }
 
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
     background: #6c757d;
     border-radius: 15px;
 }
 
 /* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
-    background:  #6c757d;
+    background: #6c757d;
     border-radius: 15px;
 }
 
+/* ---------------------------------------- media queries  ---------------------------------------------- */
 
-/* media queries */
-@media screen and (max-width:768px){
-    .main{
-        max-height:30vh;
-        min-height:20vh;
+@media screen and (max-width:768px) {
+    .main {
+        max-height: 30vh;
+        min-height: 20vh;
     }
 }

@@ -4,13 +4,15 @@
 session_start();
 
 // ouverture de la connexion BDD
-$pdo = new PDO('mysql:host=localhost;dbname=chat',
-'root',
-'root',
-array(
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
-    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-));
+$pdo = new PDO(
+    'mysql:host=localhost;dbname=chat',
+    'root',
+    'root',
+    array(
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+    )
+);
 
 // Initialisation variable
 $msg = array();
@@ -25,4 +27,4 @@ function age($naiss)
     return $interval->format('%y');
 }
 
-define('URL','/chat/');
+define('URL', '/chat/');

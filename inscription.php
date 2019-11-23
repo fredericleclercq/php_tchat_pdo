@@ -12,7 +12,7 @@ if (isset($_POST['inscription'])) // si on clique sur connexion
     if (!empty($_FILES['avatar']['name'])) {
         $avatar = date('YmdH') . '_' . $_FILES['avatar']['name'];
         $chemin = $_SERVER['DOCUMENT_ROOT'] . URL . 'avatars/';
-        move_uploaded_file($_FILES['avatar']['tmp_name'],$chemin . $avatar);
+        move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin . $avatar);
     }
 
     $resultat = $pdo->prepare("SELECT * FROM membre WHERE pseudo = :pseudo");
@@ -26,8 +26,8 @@ if (isset($_POST['inscription'])) // si on clique sur connexion
             if ($index != 'memoavatar' && $value == '') $nbEmpty++;
         }
         if ($nbEmpty > 0) {
-            $msg[] = 'Il manque ' . $nbEmpty . ' information' . (($nbEmpty > 1) ? 's':'');
-         } else {
+            $msg[] = 'Il manque ' . $nbEmpty . ' information' . (($nbEmpty > 1) ? 's' : '');
+        } else {
             // insertion en base d'un nouveau membre
             $result = $pdo->prepare("INSERT INTO membre VALUES (NULL, :pseudo,:mdp,:civilite,:ville,:date_de_naissance," . time() . ",:avatar)");
             $result->execute(array(
@@ -59,7 +59,7 @@ require_once('header.php');
 
 ?>
 
-<?= ( !empty($msg) ? $msg : '') ?>
+<?= (!empty($msg) ? $msg : '') ?>
 <div class="row">
     <div class="col splash d-flex flex-column justify-content-center align-items-center pt-2 pb-3">
         <fieldset class="w-100">
@@ -83,8 +83,8 @@ require_once('header.php');
                         Cliquer ou déposer ici<br>
                         (jpg, png ou gif - max : 1200x1200)
                     </label>
-                    <input type="file" id="avatar" name="avatar" class="form-control d-none">
-                    <input type="text" id="memoavatar" name="memoavatar" value="<?= (!empty($avatar)) ? $avatar : ''  ?>">
+                    <input type="file" id="avatar" name="avatar" class="d-none" accept="image/png, image/jpeg, image/gif">
+                    <input type="text" id="memoavatar" name="memoavatar" value="<?= (!empty($avatar)) ? $avatar : ''  ?>" class="d-none">
                 </div>
 
                 <div class="form-row">
@@ -115,7 +115,7 @@ require_once('header.php');
         </p>
     </div>
 </div>
-
+</div>
 </body>
 
 </html>
