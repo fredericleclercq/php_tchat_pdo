@@ -38,7 +38,7 @@ if ($action == 'affichage_message') {
     $result->execute(array('lastid' => $lastid));
     $tab['resultat'] = '';
     $tab['lastid'] = $lastid;
-    while ($dialogue = $result->fetch(PDO::FETCH_ASSOC)) {
+    while ($dialogue = $result->fetch()) {
         if ($dialogue['civilite'] == 'm') {
             $couleur = "bleu";
         } else {
@@ -55,7 +55,7 @@ if ($action == 'affichage_message') {
 if ($action == 'affichage_membre_connecte') {
     $resultat = $pdo->query("SELECT * FROM membre WHERE date_active >" . (time() - 1800) . " ORDER BY pseudo");
     $tab['resultat'] = '<h5>Membres connectés</h5>';
-    while ($membre = $resultat->fetch(PDO::FETCH_ASSOC)) {
+    while ($membre = $resultat->fetch()) {
         if ($membre['civilite'] == 'm') {
             $couleur = 'bleu';
             $titre = "Homme";
@@ -65,7 +65,7 @@ if ($action == 'affichage_membre_connecte') {
         }
 
         $avatar = (!empty($membre['avatar'])) ? $membre['avatar'] : 'unknown.png';
-        $tab['resultat'] .=  '<div class="d-flex align-items-center justify-content-start">
+        $tab['resultat'] .=  '<div class="d-flex align-items-center justify-content-start my-2">
             <img src="avatars/' . $avatar . '" class="avatar">
             <p class="' . $couleur . ' pl-2" title="' . $titre . ', ' . $membre['ville'] . ', ' . age($membre['date_de_naissance']) . ' ans">' . ucfirst($membre['pseudo']) . '</p>
         </div>';

@@ -1,6 +1,7 @@
 body, p {
     margin: 0;
     padding: 0;
+    font-size: 1.5rem;
 }
 
 .main {
@@ -11,6 +12,7 @@ body, p {
 #message_tchat, #liste_membre_connecte {
     overflow-y: auto;
     overflow-x: hidden;
+    border-width: thick !important;
 }
 
 .bleu {
@@ -42,8 +44,8 @@ body, p {
 
 .loader {
     background: url(ajax-loader.gif) no-repeat;
-    width: 22px;
-    height: 22px;
+    background-size:cover;
+    background-position: center;
 }
 
 .splash {
@@ -59,6 +61,11 @@ body, p {
 .avatar {
     width: 45px;
     height: 45px;
+    border-radius:50%;
+}
+
+#depotavatar{
+    cursor:pointer;
 }
 
 /* width */

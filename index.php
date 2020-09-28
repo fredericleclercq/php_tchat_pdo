@@ -6,6 +6,7 @@ require_once('inc/init.php');
 if (!isset($_SESSION['pseudo'])) // si on a pas de pseudo enregistré en session, c'est que je ne suis pas passé par la page connexion
 {
     header('location:connexion.php'); // redirection vers connexion
+    exit();
 }
 
 require_once('header.php');
@@ -13,8 +14,8 @@ require_once('header.php');
 ?>
 
 
-<div class="row d-flex">
-    <div id="message_tchat" class="col-md-8 main bg-dark text-light px-4 py-2 order-1 order-md-0">
+<div class="row d-flex justify-content-between">
+    <div id="message_tchat" class="col-md-8 main bg-dark text-light px-4 py-2 order-1 order-md-0 border border-secondary rounded">
 
         <h5>Connecté en tant que <?= ucfirst($_SESSION['pseudo']) ?></h5>
         <?php
@@ -25,7 +26,7 @@ require_once('header.php');
             FROM dialogue d, membre m
             WHERE m.id_membre = d.id_membre 
             ORDER BY d.date");
-        while ($dialogue = $result->fetch(PDO::FETCH_ASSOC)) {
+        while ($dialogue = $result->fetch()) {
             if ($dialogue['civilite'] == 'm') {
                 $couleur = "bleu";
             } else {
@@ -37,27 +38,32 @@ require_once('header.php');
         }
         ?>
     </div>
-    <div id="liste_membre_connecte" class="col-md-4 main bg-dark text-light px-4 py-2 order-0 order-md-1">
-        <h5>Membres connectés:</h5>
-        <?php
-        $resultat = $pdo->query("SELECT * FROM membre WHERE date_active >" . (time() - 1800) . " ORDER BY pseudo ASC");
-        while ($membre = $resultat->fetch(PDO::FETCH_ASSOC)) {
-            if ($membre['civilite'] == 'm') {
-                $couleur = 'bleu';
-                $titre = "Homme";
-            } else {
-                $couleur = 'rose';
-                $titre = "Femme";
-            }
+    <div class="col-md-4">
+        <div class="row">
+            <div id="liste_membre_connecte" class="col-12 offset-md-1 col-md-11 main bg-dark text-light px-4 py-2 order-0 order-md-1 border border-secondary rounded mb-2 mb-md-0">
+                <h5>Membres connectés:</h5>
+                <?php
+                $resultat = $pdo->query("SELECT * FROM membre WHERE date_active >" . (time() - 1800) . " ORDER BY pseudo ASC");
+                while ($membre = $resultat->fetch()) {
+                    if ($membre['civilite'] == 'm') {
+                        $couleur = 'bleu';
+                        $titre = "Homme";
+                    } else {
+                        $couleur = 'rose';
+                        $titre = "Femme";
+                    }
 
-            $avatar = (!empty($membre['avatar'])) ? $membre['avatar'] : 'unknown.png';
-            echo '<div class="d-flex  align-items-center justify-content-start ">
+                    $avatar = (!empty($membre['avatar'])) ? $membre['avatar'] : 'unknown.png';
+                    echo '<div class="d-flex  align-items-center justify-content-start my-2">
                         <img src="avatars/' . $avatar . '" class="avatar">
                         <p class="' . $couleur . ' pl-2" title="' . $titre . ', ' . $membre['ville'] . ', ' . age($membre['date_de_naissance']) . ' ans">' . ucfirst($membre['pseudo']) . '</p>
                     </div>';
-        }
-        ?>
+                }
+                ?>
+            </div>
+        </div>
     </div>
+
 
 </div>
 
@@ -76,11 +82,11 @@ require_once('header.php');
 <div id="formulaire_tchat">
     <form method="post" action="#" class="row  bg-dark text-light px-2 py-2 bg-light">
         <div class="col-md-8">
-            <input type="text" id="message" name="message" class="form-control">
+            <input type="text" id="message" name="message" class="form-control form-control-lg">
         </div>
         <div class="col-md-4 mt-3 mt-md-0 d-flex align-items-center justify-content-center">
-            <input type="submit" name="envoi" value="Envoi" class="btn btn-primary btn-sm d-block mx-auto" id="submit">
-            <button type="button" class="btn btn-warning btn-sm d-block mx-auto" id="deco_button">Déconnecter</button>
+            <input type="submit" name="envoi" value="Envoi" class="btn btn-primary btn-lg d-block mx-auto" id="submit">
+            <button type="button" class="btn btn-warning btn-lg d-block mx-auto" id="deco_button">Déconnecter</button>
         </div>
     </form>
 </div>

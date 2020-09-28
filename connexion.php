@@ -14,7 +14,7 @@ if (isset($_POST['connexion'])) // si on clique sur connexion
 
 
     if ($resultat->rowCount()  == 1) {
-        $membre = $resultat->fetch(PDO::FETCH_ASSOC);
+        $membre = $resultat->fetch();
         $_SESSION['id_membre'] = $membre['id_membre'];
         $_SESSION['pseudo'] = $_POST['pseudo'];
         // update date activité

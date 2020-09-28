@@ -148,8 +148,6 @@ $(document).ready(function () {
     let liste = ['image/jpeg', 'image/png', 'image/gif'];
     function checkFile(fic) {
 
-
-
         if (fic.length > 0) {
 
             if (fic[0].size > 0 && fic[0].size < 2000000) {
@@ -159,10 +157,10 @@ $(document).ready(function () {
                     $('#avatar')[0].files = fic;   // ! Edge ! pb with strict mode
 
                     let reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.addEventListener('loadend', function (event) {
                         let image = new Image();
-                        image.src = e.target.result
-                        $("#depotavatar").html('<img src="' + e.target.result + '" class="w-25 img-fluid">');
+                        image.src = event.target.result
+                        $("#depotavatar").html('<img src="' + event.target.result + '" class="w-25 img-fluid">');
                         $(image).on('load', function () {
 
                             if (image.width > 1200 || image.height > 1200) {
@@ -172,7 +170,7 @@ $(document).ready(function () {
                                 $("#depotavatar").append('<br>' + fic[0].type + ' ' + image.width + 'x' + image.height);
                             }
                         });
-                    }
+                    });
                     reader.readAsDataURL(fic[0]);
 
                 } else {

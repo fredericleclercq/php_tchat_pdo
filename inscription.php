@@ -10,14 +10,14 @@ if (isset($_POST['inscription'])) // si on clique sur connexion
     $avatar = $_POST['memoavatar'] ?? '';
 
     if (!empty($_FILES['avatar']['name'])) {
-        $avatar = date('YmdH') . '_' . $_FILES['avatar']['name'];
+        $avatar = date('YmdHis') . '_' . $_FILES['avatar']['name'];
         $chemin = $_SERVER['DOCUMENT_ROOT'] . URL . 'avatars/';
         move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin . $avatar);
     }
 
     $resultat = $pdo->prepare("SELECT * FROM membre WHERE pseudo = :pseudo");
     $resultat->execute(array('pseudo' => $_POST['pseudo']));
-    $membre = $resultat->fetch(PDO::FETCH_ASSOC);
+    $membre = $resultat->fetch();
 
     if ($resultat->rowCount() == 0) {
         //controles additionnels
